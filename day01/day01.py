@@ -14,4 +14,4 @@ def captcha(digits):
 if __name__ == '__main__':
     with open('input.txt', 'r') as inp:
         number = inp.read().strip()
-    print(captcha(number))
+    print(captcha(number))  # part 1: 1182
