@@ -21,3 +21,4 @@ if __name__ == '__main__':
     with open('input.txt', 'r') as inp:
         number = inp.read().strip()
     print(captcha(number))  # part 1: 1182
+    print(half_captcha(number))  # part 2: 1152
