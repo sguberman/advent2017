@@ -6,15 +6,14 @@ Created on Fri Dec  1 08:58:50 2017
 """
 
 
-def captcha(digits):
-    neighbors = digits[-1] + digits[:-1]
+def captcha(digits, offset=1):
+    neighbors = digits[offset:] + digits[:offset]
     return sum(int(d) for d, n in zip(digits, neighbors) if d == n)
 
 
 def half_captcha(digits):
     half = len(digits) // 2
-    neighbors = digits[half:] + digits[:half]
-    return sum(int(d) for d, n in zip(digits, neighbors) if d == n)
+    return captcha(digits, offset=half)
 
 
 if __name__ == '__main__':
