@@ -26,5 +26,17 @@ def test_half_captcha():
     assert half_captcha('12131415') == 4
 
 
+def test_part1():
+    with open('input.txt', 'r') as inp:
+        number = inp.read().strip()
+    assert captcha(number) == 1182
+
+
+def test_part2():
+    with open('input.txt', 'r') as inp:
+        number = inp.read().strip()
+    assert half_captcha(number) == 1152
+
+
 if __name__ == '__main__':
     pytest.main()
