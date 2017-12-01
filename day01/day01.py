@@ -11,6 +11,10 @@ def captcha(digits):
     return sum(int(d) for d, n in zip(digits, neighbors) if d == n)
 
 
+def half_captcha(digits):
+    raise NotImplementedError
+
+
 if __name__ == '__main__':
     with open('input.txt', 'r') as inp:
         number = inp.read().strip()
