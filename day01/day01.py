@@ -12,7 +12,9 @@ def captcha(digits):
 
 
 def half_captcha(digits):
-    raise NotImplementedError
+    half = len(digits) // 2
+    neighbors = digits[half:] + digits[:half]
+    return sum(int(d) for d, n in zip(digits, neighbors) if d == n)
 
 
 if __name__ == '__main__':
