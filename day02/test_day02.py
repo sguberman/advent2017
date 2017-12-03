@@ -9,7 +9,7 @@ Created on Sat Dec  2 20:13:58 2017
 
 import pytest
 
-from day02 import rowdiff, checksum, read_spreadsheet
+from day02 import rowdiff, checksum, read_spreadsheet, main
 
 
 def test_rowdiff():
@@ -25,6 +25,10 @@ def test_checksum():
 def test_read_spreadsheet():
     spreadsheet = [[5, 1, 9, 5], [7, 5, 3], [2, 4, 6, 8]]
     assert read_spreadsheet('test_input.txt') == spreadsheet
+
+
+def test_main():
+    assert main('test_input.txt') == 18
 
 
 if __name__ == '__main__':

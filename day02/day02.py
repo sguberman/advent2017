@@ -23,3 +23,7 @@ def read_spreadsheet(filename):
             spreadsheet.append([int(x) for x in row.strip().split()])
 
     return spreadsheet
+
+
+def main(filename):
+    raise NotImplementedError
