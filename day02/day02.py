@@ -29,5 +29,9 @@ def main(filename):
     return checksum(read_spreadsheet(filename))
 
 
+def rowdiv(row):
+    raise NotImplementedError
+
+
 if __name__ == '__main__':
     print(main('input.txt'))  # part 1: 36766
