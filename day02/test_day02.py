@@ -29,6 +29,7 @@ def test_read_spreadsheet():
 
 def test_main():
     assert main('test_input.txt') == 18
+    assert main('input.txt') == 36766
 
 
 if __name__ == '__main__':
