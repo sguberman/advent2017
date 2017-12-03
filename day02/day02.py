@@ -13,3 +13,7 @@ def rowdiff(row):
 
 def checksum(spreadsheet):
     return sum(rowdiff(row) for row in spreadsheet)
+
+
+def read_spreadsheet(filename):
+    raise NotImplementedError
