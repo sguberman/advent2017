@@ -8,8 +8,8 @@ Created on Sat Dec  2 20:14:44 2017
 
 
 def rowdiff(row):
-    raise NotImplementedError
+    return max(row) - min(row)
 
 
 def checksum(spreadsheet):
-    raise NotImplementedError
+    return sum(rowdiff(row) for row in spreadsheet)
