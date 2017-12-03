@@ -30,7 +30,10 @@ def main(filename):
 
 
 def rowdiv(row):
-    raise NotImplementedError
+    for i, a in enumerate(row):
+        for b in row[:i] + row[i+1:]:
+            if a % b == 0:
+                return a // b
 
 
 if __name__ == '__main__':
