@@ -26,4 +26,4 @@ def read_spreadsheet(filename):
 
 
 def main(filename):
-    raise NotImplementedError
+    return checksum(read_spreadsheet(filename))
