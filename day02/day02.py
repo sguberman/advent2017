@@ -16,4 +16,10 @@ def checksum(spreadsheet):
 
 
 def read_spreadsheet(filename):
-    raise NotImplementedError
+    spreadsheet = []
+
+    with open(filename, 'r') as f:
+        for row in f:
+            spreadsheet.append([int(x) for x in row.strip().split()])
+
+    return spreadsheet
