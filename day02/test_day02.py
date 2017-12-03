@@ -40,6 +40,7 @@ def test_rowdiv():
 
 def test_main2():
     assert main2('test_input2.txt') == 9
+    assert main2('input.txt') == 261
 
 
 if __name__ == '__main__':

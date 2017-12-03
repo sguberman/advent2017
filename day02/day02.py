@@ -42,3 +42,4 @@ def main2(filename):
 
 if __name__ == '__main__':
     print(main('input.txt'))  # part 1: 36766
+    print(main2('input.txt'))  # part 2: 261
