@@ -75,3 +75,11 @@ def diagonals():
     Generate the value and location of the bottom right corner of each spiral.
     """
     return zip(diagonal_values(), diagonal_locations())
+
+
+def part1():
+    return steps_to_origin(289326)
+
+
+if __name__ == '__main__':
+    print(part1())  # 419
