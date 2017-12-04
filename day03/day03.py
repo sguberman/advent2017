@@ -6,6 +6,7 @@ Created on Mon Dec  4 14:21:41 2017
 """
 
 
+from collections import defaultdict
 from itertools import count
 
 
@@ -81,5 +82,41 @@ def part1():
     return steps_to_origin(289326)
 
 
+def neighbors(x, y):
+    dxdy = (1, 0), (1, 1), (0, 1), (-1, 1), (-1, 0), (-1, -1), (0, -1), (1, -1)
+    return [(x + dx, y + dy) for dx, dy in dxdy]
+
+
+def spiral_locations():
+    x, y = 0, 0
+    for i in count(1):
+        while x < i:  # to the right
+            x += 1
+            yield (x, y)
+        while y < i:  # up
+            y += 1
+            yield (x, y)
+        while x > -i:  # to the left
+            x -= 1
+            yield (x, y)
+        while y > -i:  # down
+            y -= 1
+            yield (x, y)
+        while x < i:  # to the right
+            x += 1
+            yield (x, y)
+
+
+def part2():
+    spiral = defaultdict(int)
+    spiral[(0, 0)] = 1
+    for x, y in spiral_locations():
+        value = sum(spiral[loc] for loc in neighbors(x, y))
+        if value > 289326:
+            return value
+        spiral[(x, y)] = value
+
+
 if __name__ == '__main__':
     print(part1())  # 419
+    print(part2())  # 295229
