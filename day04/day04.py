@@ -21,13 +21,16 @@ def part1():
 
 
 def no_anagrams(passphrase):
-    raise NotImplementedError
+    return all(Counter(a) != Counter(b)
+               for i, a in enumerate(passphrase)
+                   for b in passphrase[:i] + passphrase[i + 1:])
 
 
 def part2():
-    raise NotImplementedError
+    return count_valid_passphrases('input.txt', no_anagrams)
 
 
 if __name__ == '__main__':
-    print(part1())
+    print(part1())  # 455
+    print(part2())  # 186
 
