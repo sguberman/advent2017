@@ -7,7 +7,7 @@ Created on Mon Dec  4 14:21:41 2017
 
 
 def distance(x, y):
-    raise NotImplementedError
+    return abs(x) + abs(y)
 
 
 def steps(number):
