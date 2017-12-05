@@ -32,5 +32,6 @@ testdata = [('abcde fghij', True),
 def test_no_anagrams(phrase, expected):
     assert no_anagrams(phrase.split()) == expected
 
+
 if __name__ == '__main__':
     pytest.main(['-v'])

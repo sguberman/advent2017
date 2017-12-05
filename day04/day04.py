@@ -2,18 +2,12 @@ from collections import Counter
 
 
 def no_repeats(passphrase):
-    c = Counter(passphrase)
-    return all(count < 2 for count in c.values())
+    return all(count < 2 for count in Counter(passphrase).values())
 
 
 def count_valid_passphrases(filename, is_valid=no_repeats):
-    count = 0
     with open(filename, 'r') as f:
-        for line in f:
-            passphrase = line.strip().split()
-            if is_valid(passphrase):
-                count += 1
-    return count
+        return sum(is_valid(line.strip().split()) for line in f)
 
 
 def part1():
