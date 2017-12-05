@@ -8,7 +8,7 @@ Created on Mon Dec  4 14:21:19 2017
 
 import pytest
 
-from day03 import distance, steps_to_origin, part1
+from day03 import distance, steps_to_origin, part1, part2
 
 
 def test_distance():
@@ -25,8 +25,11 @@ def test_steps_to_origin():
 
 
 def test_part1():
-    assert part1() == 419
+    assert part1(289326) == 419
 
+
+def test_part2():
+    assert part2(289326) == 295229
 
 if __name__ == '__main__':
-    pytest.main()
+    pytest.main(['-v'])

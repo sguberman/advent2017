@@ -78,8 +78,8 @@ def diagonals():
     return zip(diagonal_values(), diagonal_locations())
 
 
-def part1():
-    return steps_to_origin(289326)
+def part1(number):
+    return steps_to_origin(number)
 
 
 def neighbors(x, y):
@@ -107,16 +107,16 @@ def spiral_locations():
             yield (x, y)
 
 
-def part2():
+def part2(number):
     spiral = defaultdict(int)
     spiral[(0, 0)] = 1
     for x, y in spiral_locations():
         value = sum(spiral[loc] for loc in neighbors(x, y))
-        if value > 289326:
+        if value > number:
             return value
         spiral[(x, y)] = value
 
 
 if __name__ == '__main__':
-    print(part1())  # 419
-    print(part2())  # 295229
+    print(part1(289326))  # 419
+    print(part2(289326))  # 295229
