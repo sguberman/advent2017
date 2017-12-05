@@ -33,4 +33,3 @@ def part2():
 if __name__ == '__main__':
     print(part1())  # 455
     print(part2())  # 186
-
