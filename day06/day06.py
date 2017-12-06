@@ -7,9 +7,25 @@ Created on Wed Dec  6 14:50:49 2017
 """
 
 
+from itertools import count
+
+
 def reallocate(memory):
-    raise NotImplementedError
+    size = len(memory)
+    blocks = max(memory)
+    idx = memory.index(blocks)
+    memory[idx] = 0
+    while blocks:
+        idx = (idx + 1) % size
+        memory[idx] += 1
+        blocks -= 1
+    return memory
 
 
 def detect_loop(memory):
-    raise NotImplementedError
+    seen = {tuple(memory)}
+    for step in count(1):
+        memory = reallocate(memory)
+        if tuple(memory) in seen:
+            return step
+        seen.add(tuple(memory))
