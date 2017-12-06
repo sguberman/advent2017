@@ -9,7 +9,7 @@ Created on Wed Dec  6 14:50:30 2017
 
 import pytest
 
-from day06 import reallocate, detect_loop
+from day06 import reallocate, detect_loop, part1
 
 
 testdata = [([0, 2, 7, 0], [2, 4, 1, 2]),
@@ -26,6 +26,10 @@ def test_reallocate(memory, result):
 
 def test_detect_loop():
     assert detect_loop([0, 2, 7, 0]) == 5
+
+
+def test_part1():
+    assert part1() == 5042
 
 
 if __name__ == '__main__':

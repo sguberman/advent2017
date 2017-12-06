@@ -29,3 +29,17 @@ def detect_loop(memory):
         if tuple(memory) in seen:
             return step
         seen.add(tuple(memory))
+
+
+def read_input(filename):
+    with open(filename) as f:
+        return [int(x) for x in f.read().split()]
+
+
+def part1():
+    memory = read_input('input.txt')
+    return detect_loop(memory)
+
+
+if __name__ == '__main__':
+    print(part1())  # 5042
