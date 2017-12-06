@@ -9,7 +9,7 @@ Created on Wed Dec  6 14:50:30 2017
 
 import pytest
 
-from day06 import reallocate, detect_loop, solution
+from day06 import reallocate, detect_loop, solution, read_input
 
 
 testdata = [((0, 2, 7, 0), (2, 4, 1, 2)),
@@ -30,6 +30,13 @@ def test_detect_loop():
 
 def test_solution():
     assert solution() == (5042, 1086)
+
+
+def test_read_input():
+    memory = read_input('input.txt')
+    assert isinstance(memory, tuple)
+    assert len(memory) == 16
+    assert all(isinstance(x, int) for x in memory)
 
 
 if __name__ == '__main__':
