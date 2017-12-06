@@ -12,11 +12,11 @@ import pytest
 from day06 import reallocate, detect_loop, solution
 
 
-testdata = [([0, 2, 7, 0], [2, 4, 1, 2]),
-            ([2, 4, 1, 2], [3, 1, 2, 3]),
-            ([3, 1, 2, 3], [0, 2, 3, 4]),
-            ([0, 2, 3, 4], [1, 3, 4, 1]),
-            ([1, 3, 4, 1], [2, 4, 1, 2])]
+testdata = [((0, 2, 7, 0), (2, 4, 1, 2)),
+            ((2, 4, 1, 2), (3, 1, 2, 3)),
+            ((3, 1, 2, 3), (0, 2, 3, 4)),
+            ((0, 2, 3, 4), (1, 3, 4, 1)),
+            ((1, 3, 4, 1), (2, 4, 1, 2))]
 
 
 @pytest.mark.parametrize('memory,result', testdata)
@@ -25,7 +25,7 @@ def test_reallocate(memory, result):
 
 
 def test_detect_loop():
-    assert detect_loop([0, 2, 7, 0]) == (5, 4)
+    assert detect_loop((0, 2, 7, 0)) == (5, 4)
 
 
 def test_solution():

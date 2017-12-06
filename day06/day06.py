@@ -11,6 +11,7 @@ from itertools import count
 
 
 def reallocate(memory):
+    memory = list(memory)
     size = len(memory)
     blocks = max(memory)
     idx = memory.index(blocks)
@@ -19,21 +20,21 @@ def reallocate(memory):
         idx = (idx + 1) % size
         memory[idx] += 1
         blocks -= 1
-    return memory
+    return tuple(memory)
 
 
 def detect_loop(memory):
-    seen = {tuple(memory): 0}
+    seen = {memory: 0}
     for step in count(1):
         memory = reallocate(memory)
-        if tuple(memory) in seen:
-            return step, step - seen[tuple(memory)]
-        seen[tuple(memory)] = step
+        if memory in seen:
+            return step, step - seen[memory]
+        seen[memory] = step
 
 
 def read_input(filename):
     with open(filename) as f:
-        return [int(x) for x in f.read().split()]
+        return tuple(int(x) for x in f.read().split())
 
 
 def solution():
