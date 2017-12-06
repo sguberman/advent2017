@@ -23,12 +23,12 @@ def reallocate(memory):
 
 
 def detect_loop(memory):
-    seen = {tuple(memory)}
+    seen = {tuple(memory): 0}
     for step in count(1):
         memory = reallocate(memory)
         if tuple(memory) in seen:
-            return step
-        seen.add(tuple(memory))
+            return step, step - seen[tuple(memory)]
+        seen[tuple(memory)] = step
 
 
 def read_input(filename):
@@ -36,10 +36,10 @@ def read_input(filename):
         return [int(x) for x in f.read().split()]
 
 
-def part1():
+def solution():
     memory = read_input('input.txt')
     return detect_loop(memory)
 
 
 if __name__ == '__main__':
-    print(part1())  # 5042
+    print(solution())  # 5042, 1086
