@@ -38,5 +38,14 @@ def part1():
     return find_root(children, parents)
 
 
+def stack_weight(program, weights, children):
+    w = weights[program]
+    if program not in children:
+        return w
+    else:
+        return w + sum(stack_weight(child, weights, children)
+                       for child in children[program])
+
+
 if __name__ == '__main__':
     print(part1())  # mkxke

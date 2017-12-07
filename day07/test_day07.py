@@ -9,7 +9,7 @@ Created on Thu Dec  7 18:26:25 2017
 
 import pytest
 
-from day07 import part1, build_tree, find_root
+from day07 import part1, build_tree, find_root, stack_weight
 
 
 def test_part1():
@@ -29,6 +29,13 @@ def test_build_tree():
 def test_find_root():
     weights, children, parents = build_tree('test_input.txt')
     assert find_root(children, parents) == 'tknk'
+
+
+def test_stack_weight():
+    w, c, p = build_tree('test_input.txt')
+    assert stack_weight('ugml', w, c) == 251
+    assert stack_weight('padx', w, c) == 243
+    assert stack_weight('fwft', w, c) == 243
 
 
 if __name__ == '__main__':
