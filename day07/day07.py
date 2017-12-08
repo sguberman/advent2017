@@ -61,11 +61,10 @@ def find_imbalance(start, weights, children):
     while todo:
         current = todo.pop()
         print('current: ', current, 'todo: ', todo)
-        if all(is_balanced(c, weights, children) for c in children[current]):
-            for c in children[current]:
-                print(weights[c], stack_weight(c, weights, children))
-        else:
+        if not is_balanced(current, weights, children):
             todo.extend(children[current])
+            for c in children[current]:
+                print(c, weights[c], stack_weight(c, weights, children))
 
 
 def part2():
