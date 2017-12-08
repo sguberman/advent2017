@@ -47,5 +47,33 @@ def stack_weight(program, weights, children):
                        for child in children[program])
 
 
+def is_balanced(program, weights, children):
+    if not children[program]:
+        return True
+    else:
+        first_w = stack_weight(children[program][0], weights, children)
+        all_w = (stack_weight(c, weights, children) for c in children[program])
+        return all(c_w == first_w for c_w in all_w)
+
+
+def find_imbalance(start, weights, children):
+    todo = [start]
+    while todo:
+        current = todo.pop()
+        print('current: ', current, 'todo: ', todo)
+        if all(is_balanced(c, weights, children) for c in children[current]):
+            for c in children[current]:
+                print(weights[c], stack_weight(c, weights, children))
+        else:
+            todo.extend(children[current])
+
+
+def part2():
+    weights, children, parents = build_tree('input.txt')
+    root = find_root(children, parents)
+    find_imbalance(root, weights, children)
+
+
 if __name__ == '__main__':
     print(part1())  # mkxke
+    part2()
