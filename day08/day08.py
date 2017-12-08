@@ -39,12 +39,17 @@ def execute(instruction):
 
 
 def process(filename):
+    highest = 0
+
     with open(filename) as instructions:
         for line in instructions:
             instruction, condition = parse(line)
             if evaluate(condition):
                 execute(instruction)
-    return max(registers.values())
+                current_max = max(registers.values())
+                highest = current_max if current_max > highest else highest
+
+    return current_max, highest
 
 
 if __name__ == '__main__':
