@@ -8,7 +8,7 @@ Created on Mon Dec 11 12:30:18 2017
 
 import pytest
 
-from day11 import move, distance, part1
+from day11 import move, distance, solution
 
 
 testdata = [
@@ -27,8 +27,8 @@ def test_examples(moves, expected):
     assert distance(*location) == expected
 
 
-def test_part1():
-    assert part1() == 834
+def test_solution():
+    assert solution() == (834, 1569)
 
 if __name__ == '__main__':
     pytest.main(['-v'])

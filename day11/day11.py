@@ -9,6 +9,7 @@ Created on Mon Dec 11 11:03:16 2017
 def read_moves(filename):
     with open(filename) as f:
         moves = f.read().strip().split(',')
+
     return moves
 
 
@@ -23,16 +24,19 @@ def move(location, direction):
               'se': (1, -1, 0),
               'ne': (1, 0, -1),
               'sw': (-1, 0, 1)}
+
     return [ci + cd for ci, cd in zip(location, deltas[direction])]
 
 
-def part1():
+def solution():
     moves = read_moves('input.txt')
     location = (0, 0, 0)
+    farthest = 0
     for direction in moves:
         location = move(location, direction)
-    return distance(*location)
+        farthest = max(farthest, distance(*location))
+    return distance(*location), farthest
 
 
 if __name__ == '__main__':
-    print(part1())  # 834
+    print(solution())  # 834, 1569
