@@ -8,7 +8,7 @@ Created on Tue Dec 12 09:25:51 2017
 
 import pytest
 
-from day12 import read_input, group_containing, part1
+from day12 import read_input, group_containing, part1, unique_groups, part2
 
 
 def test_read_input():
@@ -30,6 +30,14 @@ def test_group_containing():
 
 def test_part1():
     assert part1() == 306
+
+
+def test_unique_groups():
+    assert len(unique_groups(read_input('test_input.txt'))) == 2
+
+
+def test_part2():
+    assert part2() == 200
 
 
 if __name__ == '__main__':

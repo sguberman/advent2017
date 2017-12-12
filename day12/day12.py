@@ -16,8 +16,8 @@ def read_input(filename):
 
 
 def group_containing(node, graph):
-    group = {node}
-    todo = {neighbor for neighbor in graph[node]}
+    group = set()
+    todo = {node}
     while todo:
         new = todo.pop()
         group.add(new)
@@ -31,5 +31,21 @@ def part1():
     return len(group_containing(0, read_input('input.txt')))
 
 
+def unique_groups(graph):
+    groups = set()
+    todo = set(graph.keys())
+    while todo:
+        new = todo.pop()
+        new_group = group_containing(new, graph)
+        groups.add(tuple(new_group))
+        todo -= new_group
+    return groups
+
+
+def part2():
+    return len(unique_groups(read_input('input.txt')))
+
+
 if __name__ == '__main__':
     print(part1())  # 306
+    print(part2())  # 200
