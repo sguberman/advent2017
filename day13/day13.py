@@ -45,6 +45,9 @@ class Layer:
     def scanner_location(self):
         return self.scanner_at
 
+    def clear_at_time(self, time):
+        return not (time % (2 * (self.range - 1)) == 0)
+
 
 class Firewall:
 
@@ -79,13 +82,10 @@ class Firewall:
         return total_severity
 
     def packet_caught(self, delay=0):
-        while self.time < delay:
-            self.update_layers()
-        while self.packet_at < self.exit_layer:
-            self.advance_packet()
-            if self.layers[self.packet_at].scanner_location() == 0:
+        for layer in self.layers:
+            time = delay + layer
+            if not self.layers[layer].clear_at_time(time):
                 return True
-            self.update_layers()
         return False
 
 
@@ -95,12 +95,12 @@ def part1():
 
 
 def part2():
+    f = Firewall('input.txt')
     for delay in count(0):
-        f = Firewall('input.txt')
         if not f.packet_caught(delay):
             return delay
 
 
 if __name__ == '__main__':
     print(part1())  # 1476
-    print(part2())  # ???
+    print(part2())  # 3937334
